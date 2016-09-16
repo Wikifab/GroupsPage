@@ -13,7 +13,7 @@ class ApiGroupsPage extends \ApiBase {
 	}
 	public function getAllowedParams() {
 		return array (
-				'page' => array (
+				'memberpage' => array (
 						\ApiBase::PARAM_TYPE => 'string',
 						\ApiBase::PARAM_REQUIRED => true
 				),
@@ -35,14 +35,14 @@ class ApiGroupsPage extends \ApiBase {
 	}
 	public function execute() {
 		$params = $this->extractRequestParams ();
-		$page = $params ['page'];
+		$page = $params ['memberpage'];
 		$grouppageParam = $params ['groupspage'];
 		$groupaction = $params['groupaction'];
 
 		//$grouppageParam = 'Group:Toto';
 
 		$page = \Title::newFromDBkey( $page );
-		$grouppage = \Title::newFromText ( $grouppageParam );
+		$grouppage = \Title::newFromDBkey ( $grouppageParam );
 
 		$r = [ ];
 		$fail = false;

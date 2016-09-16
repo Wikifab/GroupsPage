@@ -2,13 +2,13 @@
 
 $wgResourceModules['ext.groupspage.js'] = array(
 		'scripts' => 'groupspagebutton.js',
-		'styles' => array(),
+		'styles' => array('groupspagebutton.css'),
 		'messages' => array(
 		),
 		'dependencies' => array(
 		),
 		'position' => 'bottom',
-		'localBasePath' => __DIR__ . 'js',
+		'localBasePath' => __DIR__ . '/js',
 		'remoteExtPath' => 'GroupsPage/js',
 );
 
@@ -29,13 +29,19 @@ $wgExtraNamespaces[NS_GROUP_BELONGING] = "Group_belonging";
 
 $wgAutoloadClasses['GroupsPage\\Hook'] = __DIR__ . '/includes/Hook.php';
 $wgAutoloadClasses['GroupsPage\\ApiGroupsPage'] = __DIR__ . '/includes/ApiGroupsPage.php';
+$wgAutoloadClasses['GroupsPage\\GroupsPageCore'] = __DIR__ . '/includes/GroupsPageCore.php';
+$wgAutoloadClasses['GroupsPage\\Buttons'] = __DIR__ . "/includes/Buttons.php";
 
-
-$wgHooks['SkinTemplateNavigation'][] = 'GroupsPage\\Hook::displayTab';
-$wgHooks['BeforePageDisplay'][] = 'GroupsPage\\Hook::onBeforePageDisplay';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'GroupsPage\\Hook::onLoadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'GroupsPage\\Hook::onParserFirstCallInit';
+$wgHooks['SkinTemplateNavigation'][] = "GroupsPage\\Buttons::onSkinTemplateNavigation";
+$wgHooks['BeforePageDisplay'][] = "GroupsPage\\Buttons::onBeforePageDisplay";
 
 
 $wgAPIModules['goupspage'] = 'GroupsPage\\ApiGroupsPage';
 
 $wgExtensionMessagesFiles['GroupsPage'] = __DIR__ . '/GroupsPage.i18n.php';
+
+$wgGroupsPagesNamespacesEnabled = [
+		NS_MAIN => true
+];

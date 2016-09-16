@@ -3,6 +3,14 @@
 namespace GroupsPage;
 
 class Hook  {
+
+	public static function onLoadExtensionSchemaUpdates( \DatabaseUpdater $updater ) {
+
+		$updater->addExtensionTable( 'pagesbelonging',
+				__DIR__ . '/tables.sql' );
+		return true;
+	}
+
 	/**
 	 * @param EchoEvent $event
 	 * @param string $param
@@ -17,61 +25,45 @@ class Hook  {
 		return;
 	}
 
+
+
+	# Parser function to insert a link changing a tab.
 	public static function onParserFirstCallInit( $parser ) {
-		$parser->setFunctionHook( 'addToGroupButton', 'GroupsPage\\Hook::parserAddToGroupButton' );
+		$parser->setFunctionHook( 'displayMemberTutorials', array('GroupsPage\\Hook', 'parserDisplayMemberTutorials' ));
 		return true;
 	}
 
 
-	public static function parserAddToGroupButton( $input, $grouppage = 'top', $page = 4 ) {
+	public static function parserDisplayMemberTutorials(\Parser $input, $groupsPage =  null) {
 
-		$button = '<a class="addToGroupsPage" data-grouppage="'.$grouppage.'" data-page="'.$page.'" >';
-		$button .= '<button>';
-		$button .= 'add to group';
-		$button .= '</button>';
-		$button .= '</a>';
+		$out = '<!-- display member tuttorials -->';
 
-
-		return array( $button, 'noparse' => true, 'isHTML' => true );
-	}
-
-
-	public static function onBeforePageDisplay( $out ) {
-		$out->addModules( 'ext.groupspage.js' );
-	}
-
-
-	/**
-	 * Adds an "action" (i.e., a tab) to edit the current article with
-	 * a form
-	 */
-	static function displayTab( $obj, &$links ) {
-
-
-		$button = '<button class="addToGroupsPage" data-grouppage="Group:toto" data-page="Horloge_de_Fibonacci" > add to group</button>';
-
-		$content_actions = &$links['views'];
-
-		if ( method_exists ( $obj, 'getTitle' ) ) {
-			$title = $obj->getTitle();
+		if( $groupsPage == null || $groupsPage == 'this') {
+			$grouppageTitle = $input->getTitle();
 		} else {
-			$title = $obj->mTitle;
-		}
-		$groupNameSpace = [ NS_GROUP, NS_GROUP_TALK];
-
-		if ( !isset( $title ) ||
-			( !in_array( $title->getNamespace(), $groupNameSpace ) ) ) {
-					return true;
+			// TODO : how to get back page Title when in a namespace ? (have to change '_' in ':')
+			$grouppageTitle = \Title::newFromDBkey($groupsPage);
 		}
 
-		$form_create_tab = array(
-			'class' => '',
-			'text' => $button,
-			'href' => $title->getLocalURL( 'action=formcreate' )
-		);
+		if( !$grouppageTitle ) {
+			return '';
+		}
+		$pages = GroupsPageCore::getInstance()->getMemberPages($grouppageTitle);
 
-		$content_actions['addtogroup'] = $form_create_tab;
 
-		return true; // always return true, in order not to stop MW's hook processing!
+		$wikifabSearchResultFormatter = new \WikifabExploreResultFormatter();
+		$wikifabSearchResultFormatter->setTemplate($GLOBALS['egChameleonLayoutFileSearchResultUserPage']);
+
+		$out .= '<div class="row">';
+		foreach ($pages as $page) {
+			$result = \SearchResult::newFromTitle( $page );
+			$out .= $wikifabSearchResultFormatter->getPageDetails( $result );
+		}
+		$out .= '</div>';
+		$out .= '<!-- end display member tuttorials -->';
+
+
+
+		return array( $out, 'noparse' => true, 'isHTML' => true );
 	}
 }

@@ -2,17 +2,15 @@
 	
 
 	function groupAdded( grouppage, page) {
-		$(".addToGroupsPage[data-grouppage='"+grouppage+"'][data-page='"+page+"']").hide();
-		$(".removeFromGroupsPage[data-grouppage='"+grouppage+"'][data-page='"+page+"']").show();
+		$(".addToGroupLink[data-grouppage='"+grouppage+"'][data-page='"+page+"']").addClass('groupAdded').removeClass('groupRemoved');
 	};
 	function groupRemoved(grouppage, page) {
-		$(".addToGroupsPage[data-grouppage='"+grouppage+"'][data-page='"+page+"']").show();
-		$(".removeFromGroupsPage[data-grouppage='"+grouppage+"'][data-page='"+page+"']").hide();
+		$(".addToGroupLink[data-grouppage='"+grouppage+"'][data-page='"+page+"']").removeClass('groupAdded').addClass('groupRemoved');
 	};
 
 
 
-	$('.addToGroupsPage').click(function() {
+	$('.addToGroupLink').click(function() {
 		
 		var grouppage = $(this).attr('data-grouppage');
 		var page = $(this).attr('data-page');
@@ -24,11 +22,17 @@
 			$.ajax({
 				type: "POST",
 				url: mw.util.wikiScript('api'),
-				data: { action:'goupspage', format:'json', groupaction: 'add', token: token, page: page, groupspage: grouppage},
+				data: { 
+					action:'goupspage', 
+					format:'json', 
+					groupaction: 'add', token: token, 
+					memberpage: page, 
+					groupspage: grouppage
+				},
 			    dataType: 'json',
 			    success: function (jsondata) {
 					if(jsondata.goupspage.success == 1) {
-						groupAdded(userToFollow);
+						groupAdded(grouppage, page);
 					}
 			}});
 		};
@@ -60,7 +64,7 @@
 			    dataType: 'json',
 			    success: function (jsondata) {
 					if(jsondata.goupspage.success == 1) {
-						groupRemoved(userToFollow);
+						groupRemoved(grouppage, page);
 					}
 			}});
 		};

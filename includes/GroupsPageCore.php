@@ -29,7 +29,7 @@ class GroupsPageCore  {
 	 * @param \Title $grouppage
 	 * @return array
 	 */
-	public function getGroupsPages(\Title $grouppage) {
+	public function getMemberPages(\Title $grouppage) {
 		$list = array();
 		$dbr = wfGetDB( DB_MASTER );
 
@@ -135,10 +135,6 @@ class GroupsPageCore  {
 		$added = array();
 
 		foreach ( $pages as $page ) {
-			$inputUser = $userToWatch;
-			if ( !$userToWatch instanceof User ) {
-				$userToWatch = User::newFromName($userToWatch);
-			}
 
 			if ( $page instanceof \Title && $page->getArticleID()) {
 				$rows[] = array(
@@ -147,7 +143,7 @@ class GroupsPageCore  {
 				);
 				$added[] = $page;
 
-				Hooks::run( 'groupspages-newpageingroup', [ $gouppage, $page ] );
+				\Hooks::run( 'groupspages-newpageingroup', [ $gouppage, $page ] );
 			}
 		}
 

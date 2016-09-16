@@ -15,7 +15,9 @@ $magicWords = array();
  */
 $magicWords['en'] = array(
    'addToGroupButton' => array( 0, 'addToGroupButton' ),
+   'displayMemberTutorials' => array( 0, 'displayMemberTutorials' ),
 );
 $magicWords['fr'] = array(
    'addToGroupButton' => array( 0, 'addToGroupButton' ),
+   'displayMemberTutorials' => array( 0, 'displayMemberTutorials' ),
 );
