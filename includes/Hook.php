@@ -29,6 +29,7 @@ class Hook  {
 
 	# Parser function to insert a link changing a tab.
 	public static function onParserFirstCallInit( $parser ) {
+		$parser->setFunctionHook( 'joinGroupButton', array('GroupsPage\\Buttons', 'parserButton' ));
 		$parser->setFunctionHook( 'displayMemberTutorials', array('GroupsPage\\Hook', 'parserDisplayMemberTutorials' ));
 		return true;
 	}

@@ -85,62 +85,9 @@ class Buttons  {
 	}
 
 
-	public static function parserButton( \Parser $input, $type = 'star', $grouppage = null ) {
+	public static function parserButton( \Parser $input, $grouppage = null ) {
 
-		$input->getOutput()->addModules( 'ext.userspageslinks.js' );
-
-		if( ! $grouppage) {
-			if (!$input->getTitle() ) {
-				trigger_error("No title founded");
-				return false;
-			}
-			$grouppage = $input->getTitle()->getPrefixedDBkey();
-		}
-
-		$pagesLinksActives = UsersPagesLinksCore::getInstance()->getUserPageLinks($input->getUser(), $input->getTitle());
-		$pagesLinksCounters= UsersPagesLinksCore::getInstance()->getPageCounters($input->getTitle());
-
-		if (UsersPagesLinksCore::getInstance()->hasLink($input->getUser(), $input->getTitle(), $type)){
-			$addClass='rmAction';
-		} else {
-			$addClass='addAction';
-		}
-
-		$counter = isset($pagesLinksCounters[$type]) ? $pagesLinksCounters[$type] : 0;
-
-		$doLabel = wfMessage('userspageslinks-' . $type);
-		$undoLabel = wfMessage('userspageslinks-un' . $type);
-
-		switch($type) {
-			case 'star':
-				$faClass ='fa fa-heart';
-				break;
-			case 'member':
-				$faClass ='fa fa-group';
-				break;
-			case 'ididit':
-				$faClass ='fa fa-hand-peace-o';
-				break;
-			default:
-				$faClass ='fa fa-eye';
-				break;
-		}
-
-		$button = '<a class="UsersPagesLinksButton '.$addClass.'" data-linkstype="'.$type.'" data-page="'.$grouppage.'" >';
-		$button .= '<button>';
-		$button .= '<span class=" doActionLabel"><i class="'.$faClass.'"></i> '.$doLabel.'</span>';
-		$button .= '<span class=" undoActionLabel"><i class="'.$faClass.'"></i>  '.$undoLabel.'</span>';
-		$button .= '</button>';
-		$button .= '</a>';
-
-		$button .= '<a class="UsersPagesLinksButtonCounter '.$addClass.'" data-linkstype="'.$type.'" data-page="'.$grouppage.'" >';
-		$button .= '<button>';
-		$button .= $counter;
-		$button .= '</button>';
-		$button .= '</a>';
-
-
-		return array( $button, 'noparse' => true, 'isHTML' => true );
+		return \UsersPagesLinks\Buttons::parserButton($input, 'member',$grouppage);
 	}
 
 
