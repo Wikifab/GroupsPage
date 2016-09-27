@@ -35,3 +35,18 @@
     max-width: 300px;
     overflow: hidden;
 }
+
+.tabGroupsButton {
+	text-align:right;
+}
+
+body[class^='page-Group_'].tabber, body[class*='page-Group_'].tabber {
+	margin-top: -30px;
+}
+
+@media (max-width: 768px) {
+	body[class^='page-Group_'].tabber, body[class*='page-Group_'].tabber {
+		margin-top: 0px;
+	}
+}
+
