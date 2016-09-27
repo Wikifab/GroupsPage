@@ -1,3 +1,37 @@
 .addToGroupLink.groupAdded {
 	color:green;
 }
+
+.dropdownButton-addtogroup button {
+	background-color: #eee;
+	background-image: -webkit-linear-gradient(#fcfcfc,#eee);
+	background-image: linear-gradient(#fcfcfc,#eee);
+	border: 1px solid #d5d5d5;
+    margin-left: 5px;
+    padding: 4px 10px;
+}
+
+.mw-body .dropdownButton-addtogroup ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.mw-body .dropdownButton-addtogroup ul > li.dropdownInfoMessage {
+	font-size: 11px;
+	padding: 0px 10px;
+}
+
+.dropdownButton-addtogroup .dropdown-menu > li.addtogroup-alert {
+	font-size: 10px;
+	padding-left:5px;
+}
+
+.dropdownButton-addtogroup > .dropdown-menu {
+	min-width:210px;
+}
+
+.dropdownButton-addtogroup .dropdown-menu > li > a {
+    padding: 3px 10px;
+    max-width: 300px;
+    overflow: hidden;
+}
