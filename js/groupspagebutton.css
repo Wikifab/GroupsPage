@@ -46,7 +46,7 @@ body[class^='page-Group_'].tabber, body[class*='page-Group_'].tabber {
 
 @media (max-width: 768px) {
 	body[class^='page-Group_'].tabber, body[class*='page-Group_'].tabber {
-		margin-top: 0px;
+		margin-top: 20px;
 	}
 }
 
