@@ -53,7 +53,7 @@ class Hook  {
 
 
 		$wikifabSearchResultFormatter = new \WikifabExploreResultFormatter();
-		$wikifabSearchResultFormatter->setTemplate($GLOBALS['egChameleonLayoutFileSearchResultUserPage']);
+		$wikifabSearchResultFormatter->setTemplate($GLOBALS['egChameleonLayoutFileSearchResult']);
 
 		$out .= '<div class="row">';
 		foreach ($pages as $page) {
