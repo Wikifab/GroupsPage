@@ -44,6 +44,8 @@ $wgHooks['BeforePageDisplay'][] = "GroupsPage\\Buttons::onBeforePageDisplay";
 
 $wgAPIModules['goupspage'] = 'GroupsPage\\ApiGroupsPage';
 
+
+$GLOBALS['wgMessagesDirs']['GroupsPageGeneral'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['GroupsPage'] = __DIR__ . '/GroupsPage.i18n.php';
 
 $wgGroupsPagesNamespacesEnabled = [
