@@ -12,7 +12,7 @@ class Buttons  {
 			return true;
 		}
 		$ns = $out->getTitle()->getNamespace();
-		if(isset($wgGroupsPagesNamespacesEnabled[$ns])) {
+		if(isset($wgGroupsPagesNamespacesEnabled[$ns]) || $ns == NS_GROUP) {
 			$out->addModules( 'ext.groupspage.js' );
 		}
 	}
