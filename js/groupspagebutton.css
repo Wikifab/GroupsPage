@@ -50,3 +50,7 @@ body[class^='page-Group_'].tabber, body[class*='page-Group_'].tabber {
 	}
 }
 
+.mw-special-ExploreGroups .contentHeader,
+.mw-special-ExploreGroups .mw-specialpage-summary {
+    display: none;
+}

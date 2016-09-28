@@ -31,7 +31,7 @@ class GroupsPageCore  {
 	 */
 	public function getMemberPages(\Title $grouppage) {
 		$list = array();
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$res = $dbr->select(
 			'pagesbelonging',
@@ -61,7 +61,7 @@ class GroupsPageCore  {
 	 */
 	public function getGroupNbPages(\Title $page) {
 
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( !$user instanceof User ) {
 			$user = User::newFromName($user);

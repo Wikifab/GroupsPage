@@ -27,10 +27,14 @@ $wgExtraNamespaces[NS_GROUP_TALK] = "Group_talk";
 $wgExtraNamespaces[NS_GROUP_BELONGING] = "Group_belonging";
 
 
+$wgAutoloadClasses['GroupsPage\\SpecialExploreGroups'] = __DIR__ . '/includes/SpecialExploreGroups.php';
 $wgAutoloadClasses['GroupsPage\\Hook'] = __DIR__ . '/includes/Hook.php';
 $wgAutoloadClasses['GroupsPage\\ApiGroupsPage'] = __DIR__ . '/includes/ApiGroupsPage.php';
 $wgAutoloadClasses['GroupsPage\\GroupsPageCore'] = __DIR__ . '/includes/GroupsPageCore.php';
 $wgAutoloadClasses['GroupsPage\\Buttons'] = __DIR__ . "/includes/Buttons.php";
+
+$wgSpecialPages['ExploreGroups'] = 'GroupsPage\\SpecialExploreGroups';
+
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GroupsPage\\Hook::onLoadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'GroupsPage\\Hook::onParserFirstCallInit';
