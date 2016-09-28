@@ -32,6 +32,7 @@ $wgAutoloadClasses['GroupsPage\\Hook'] = __DIR__ . '/includes/Hook.php';
 $wgAutoloadClasses['GroupsPage\\ApiGroupsPage'] = __DIR__ . '/includes/ApiGroupsPage.php';
 $wgAutoloadClasses['GroupsPage\\GroupsPageCore'] = __DIR__ . '/includes/GroupsPageCore.php';
 $wgAutoloadClasses['GroupsPage\\Buttons'] = __DIR__ . "/includes/Buttons.php";
+$wgAutoloadClasses['GroupsPage\\ExploreGroupsTag'] = __DIR__ . "/includes/ExploreGroupsTag.php";
 
 $wgSpecialPages['ExploreGroups'] = 'GroupsPage\\SpecialExploreGroups';
 

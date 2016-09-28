@@ -4,10 +4,12 @@ namespace GroupsPage;
 
 class SpecialExploreGroups extends \SpecialWfExplore {
 
-	private $pageLimitResult = 12;
+	private $pageLimitResult;
 
 	public function __construct() {
 		parent::__construct( 'ExploreGroups', array(NS_GROUP) );
+
+		$this->pageLimitResult = ExploreGroupsTag::PAGE_LIMIT;
 
 		$this->WfExploreCore->setNamespace(array('Group'));
 		$this->WfExploreCore->setSearchPageTitle( self::getTitleFor( 'ExploreGroups' ));
