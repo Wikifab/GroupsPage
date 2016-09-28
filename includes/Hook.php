@@ -31,6 +31,7 @@ class Hook  {
 	public static function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 'joinGroupButton', array('GroupsPage\\Buttons', 'parserButton' ));
 		$parser->setFunctionHook( 'displayMemberTutorials', array('GroupsPage\\Hook', 'parserDisplayMemberTutorials' ));
+		$parser->setFunctionHook( 'displayExploreGroups', array('GroupsPage\\ExploreGroupsTag', 'addSampleParser' ));
 		return true;
 	}
 

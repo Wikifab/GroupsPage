@@ -4,7 +4,7 @@ namespace GroupsPage;
 
 class SpecialExploreGroups extends \SpecialWfExplore {
 
-	private $pageLimitResult = 4;
+	private $pageLimitResult = 12;
 
 	public function __construct() {
 		parent::__construct( 'ExploreGroups', array(NS_GROUP) );

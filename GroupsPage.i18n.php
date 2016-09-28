@@ -17,9 +17,11 @@ $magicWords['en'] = array(
    'joinGroupButton' => array( 0, 'joinGroupButton' ),
    'addToGroupButton' => array( 0, 'addToGroupButton' ),
    'displayMemberTutorials' => array( 0, 'displayMemberTutorials' ),
+   'displayExploreGroups' => array( 0, 'displayExploreGroups' ),
 );
 $magicWords['fr'] = array(
    'joinGroupButton' => array( 0, 'joinGroupButton' ),
    'addToGroupButton' => array( 0, 'addToGroupButton' ),
    'displayMemberTutorials' => array( 0, 'displayMemberTutorials' ),
+   'displayExploreGroups' => array( 0, 'displayExploreGroups' ),
 );
