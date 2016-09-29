@@ -100,8 +100,8 @@ h5.group-title {
 }
 
 @media (max-width: 1200px) {
-	.project-thumbnail img {
-    	min-height: 91px;
+	.group-thumbnail img {
+    	height: 91px;
 	}
 	
 	.group-thumbnail {
@@ -117,8 +117,8 @@ h5.group-title {
 	#bodyContent .searchresults p.group-blurb {
 	    height: 37px;
 	}
-	.project-thumbnail img {
-    	min-height: 114px;
+	.group-thumbnail img {
+    	height: initial;
 	}
 	
 	.group-thumbnail {
