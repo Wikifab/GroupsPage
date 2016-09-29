@@ -98,3 +98,31 @@ h5.group-title {
     color: #444;
 	margin-bottom:0px;
 }
+
+@media (max-width: 1200px) {
+	.project-thumbnail img {
+    	min-height: 91px;
+	}
+	
+	.group-thumbnail {
+		height: 91px;
+	}
+	
+	#bodyContent .searchresults p.group-blurb {
+	    height: 20px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#bodyContent .searchresults p.group-blurb {
+	    height: 37px;
+	}
+	.project-thumbnail img {
+    	min-height: 114px;
+	}
+	
+	.group-thumbnail {
+		height: 114px;
+	}
+}
+
