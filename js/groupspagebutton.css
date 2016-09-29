@@ -102,6 +102,7 @@ h5.group-title {
 @media (max-width: 1200px) {
 	.group-thumbnail img {
     	height: 91px;
+	    min-height: 91px;
 	}
 	
 	.group-thumbnail {
@@ -123,6 +124,7 @@ h5.group-title {
 	
 	.group-thumbnail {
 		height: 114px;
+		min-height: 114px;
 	}
 }
 
