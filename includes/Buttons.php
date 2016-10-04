@@ -23,8 +23,8 @@ class Buttons  {
 		// if no button defined for this namespace, return
 		if ($wgGroupsPagesNamespacesEnabled) {
 			$ns = $page->getTitle()->getNamespace();
-			if( ! isset($wgGroupsPagesNamespacesEnabled[$ns])) {
-				return true;
+			if( !$ns || ! in_array($ns, $wgGroupsPagesNamespacesEnabled)) {
+				return true;;
 			}
 		}
 
