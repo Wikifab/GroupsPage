@@ -7,7 +7,7 @@ $wgResourceModules['ext.groupspage.js'] = array(
 		),
 		'dependencies' => array(
 		),
-		'position' => 'bottom',
+		'position' => 'top',
 		'localBasePath' => __DIR__ . '/js',
 		'remoteExtPath' => 'GroupsPage/js',
 );
