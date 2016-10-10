@@ -50,5 +50,5 @@ $GLOBALS['wgMessagesDirs']['GroupsPageGeneral'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['GroupsPage'] = __DIR__ . '/GroupsPage.i18n.php';
 
 $wgGroupsPagesNamespacesEnabled = [
-		NS_MAIN => true
+		NS_MAIN
 ];
