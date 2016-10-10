@@ -26,6 +26,8 @@ $wgExtraNamespaces[NS_GROUP_TALK] = "Group_talk";
 // not used yet
 $wgExtraNamespaces[NS_GROUP_BELONGING] = "Group_belonging";
 
+$wgUFAllowedNamespaces[NS_GROUP] = true;
+
 
 $wgAutoloadClasses['GroupsPage\\SpecialExploreGroups'] = __DIR__ . '/includes/SpecialExploreGroups.php';
 $wgAutoloadClasses['GroupsPage\\Hook'] = __DIR__ . '/includes/Hook.php';
