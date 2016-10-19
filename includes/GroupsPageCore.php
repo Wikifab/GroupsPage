@@ -125,7 +125,7 @@ class GroupsPageCore  {
 	 *
 	 * $pages can be an array of Title Object;
 	 *
-	 * @param \Title $user
+	 * @param \Title $gouppage
 	 * @param array $users Array of strings, or Title objects
 	 */
 	public function addPagesToGroup( \Title $gouppage, $pages ) {
