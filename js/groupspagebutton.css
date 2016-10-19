@@ -56,8 +56,9 @@ body[class^='page-Group_'].tabber, body[class*='page-Group_'].tabber {
 }
 
 .group-thumbnail img {
-    width: 100%;
-    min-height: 116px;
+    max-width: 116px;
+	max-height: 116px;
+    margin: auto;
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-bottom-left-radius: 8px;
 	-moz-border-radius-topleft: 8px;
@@ -69,6 +70,7 @@ body[class^='page-Group_'].tabber, body[class*='page-Group_'].tabber {
 .group-thumbnail {
     overflow: hidden;
     height: 116px;
+    display: flex;
 }
 
 .group-card-content {
@@ -101,8 +103,8 @@ h5.group-title {
 
 @media (max-width: 1200px) {
 	.group-thumbnail img {
-    	height: 91px;
-	    min-height: 91px;
+	    max-width: 91px;
+	    max-height: 91px;
 	}
 	
 	.group-thumbnail {
@@ -119,12 +121,12 @@ h5.group-title {
 	    height: 37px;
 	}
 	.group-thumbnail img {
-    	height: initial;
+	    max-width: 114px;
+	    max-height: 114px;
 	}
 	
 	.group-thumbnail {
 		height: 114px;
-		min-height: 114px;
 	}
 }
 
