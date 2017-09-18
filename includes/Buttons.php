@@ -13,6 +13,12 @@ class Buttons  {
 		}
 		$ns = $out->getTitle()->getNamespace();
 		if(isset($wgGroupsPagesNamespacesEnabled[$ns]) || $ns == NS_GROUP) {
+
+			$out->addModuleStyles(
+					array(
+							'ext.groupspage.css'
+					)
+			);
 			$out->addModules( 'ext.groupspage.js' );
 		}
 	}

@@ -1,13 +1,18 @@
 <?php
 
+$wgResourceModules['ext.groupspage.css'] = array(
+		'styles' => array('groupspagebutton.css'),
+		'position' => 'top',
+		'localBasePath' => __DIR__ . '/js',
+		'remoteExtPath' => 'GroupsPage/js',
+);
 $wgResourceModules['ext.groupspage.js'] = array(
 		'scripts' => 'groupspagebutton.js',
-		'styles' => array('groupspagebutton.css'),
 		'messages' => array(
 		),
 		'dependencies' => array(
 		),
-		'position' => 'top',
+		'position' => 'bottom',
 		'localBasePath' => __DIR__ . '/js',
 		'remoteExtPath' => 'GroupsPage/js',
 );
