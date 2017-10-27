@@ -46,7 +46,10 @@ class GroupsPageCore  {
 		$pages = array();
 		if ( $res->numRows() > 0 ) {
 			foreach ( $res as $row ) {
-				$pages[] = \Title::newFromID(  $row->pb_child_page_id );
+				$title = \Title::newFromID(  $row->pb_child_page_id );
+				if($title) {
+					$pages[] = $title;
+				}
 			}
 			$res->free();
 		}
