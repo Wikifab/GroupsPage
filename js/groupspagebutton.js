@@ -1,14 +1,27 @@
 (function() {
 	
+	function groupAdded(grouppage, page) {
 
-	function groupAdded( grouppage, page) {
-		$(".addToGroupLink[data-grouppage='"+grouppage+"'][data-page='"+page+"']").addClass('groupAdded').removeClass('groupRemoved');
-		$(".addToGroupLink[data-grouppage='"+grouppage+"'][data-page='"+page+"'] i").removeClass('fa-square-o').addClass('fa-check-square-o');
-	};
+		// jquery selector doesn't manage all special char such as quote (")
+		// so we have to use a filter function :
+		$(".addToGroupLink").filter(
+				function(i) {
+					return ($(this).attr("data-grouppage") == grouppage 
+							&& $(this).attr("data-page") == page);
+				})
+				.addClass('groupAdded').removeClass('groupRemoved')
+				.find('i').removeClass('fa-square-o').addClass('fa-check-square-o');
+
+	}
 	function groupRemoved(grouppage, page) {
-		$(".addToGroupLink[data-grouppage='"+grouppage+"'][data-page='"+page+"']").removeClass('groupAdded').addClass('groupRemoved');
-		$(".addToGroupLink[data-grouppage='"+grouppage+"'][data-page='"+page+"'] i").removeClass('fa-check-square-o').addClass('fa-square-o');
-	};
+		$(".addToGroupLink").filter(
+				function(i) {
+					return ($(this).attr("data-grouppage") == grouppage 
+							&& $(this).attr("data-page") == page);
+				})
+				.removeClass('groupAdded').addClass('groupRemoved')
+				.find('i').addClass('fa-square-o').removeClass('fa-check-square-o');
+	}
 
 
 	function addToGroup(grouppage, page) {
