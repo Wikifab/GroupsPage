@@ -18,7 +18,7 @@
 					groupspage: grouppage
 				},
 			    dataType: 'json',
-			    success: function (jsondata, mv) {
+			    success: function (jsondata) {
 			    	$("#gp-special-save i.upl_loading").hide();
 			    	$("#reordergroup-alert").show();
 			    	if(jsondata.groupspage_reordergroup.success){
@@ -26,7 +26,7 @@
 			    		$("#reordergroup-alert").html(mw.msg('gp-special-success'));
 			    	}else{
 			    		$("#reordergroup-alert").addClass("alert-danger");
-			    		$("#reordergroup-alert").html(mv.msg('gp-special-error'));
+			    		$("#reordergroup-alert").html(mw.msg('gp-special-error'));
 			    	}
 				}
 			});
