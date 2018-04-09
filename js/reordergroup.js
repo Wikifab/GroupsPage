@@ -1,0 +1,58 @@
+(function() {
+
+	function ReorderGroup(grouppage, indexes) {
+		
+		// fonction to do second request to execute follow action
+		function ajaxGroupsPageQuery(jsondata) {
+			var token = jsondata.query.tokens.csrftoken;
+			$("#gp-special-save i.upl_loading").show();
+			$("#tutorials-list .alert").hide();
+			$.ajax({
+				type: "POST",
+				url: mw.util.wikiScript('api'),
+				data: { 
+					action:'groupspage_reordergroup', 
+					format:'json', 
+					token: token, 
+					indexes: indexes, 
+					groupspage: grouppage
+				},
+			    dataType: 'json',
+			    success: function (jsondata, mv) {
+			    	$("#gp-special-save i.upl_loading").hide();
+			    	$("#tutorials-list .alert").show();
+			    	if(jsondata.groupspage_reordergroup.success){
+			    		$("#tutorials-list .alert").addClass("alert-success");
+			    		$("#tutorials-list .alert").html(mw.msg('gp-special-success'));
+			    	}else{
+			    		$("#tutorials-list .alert").addClass("alert-danger");
+			    		$("#tutorials-list .alert").html(mv.msg('gp-special-error'));
+			    	}
+				}
+			});
+		};
+		
+		// first request to get token
+		$.ajax({
+			type: "GET",
+			url: mw.util.wikiScript('api'),
+			data: { action:'query', format:'json',  meta: 'tokens', type:'csrf'},
+		    dataType: 'json',
+		    success: ajaxGroupsPageQuery
+		});
+	}
+
+	$( document ).ready(function() {
+
+		$("#tutorials-list").sortable();
+
+		$('#gp-special-save').click(function() {
+			var indexes = $("#tutorials-list").sortable('serialize');
+
+		    var grouppage = $("#tutorials-list").attr('data-grouppage');
+
+		    ReorderGroup(grouppage, indexes);
+		});
+	});
+
+})();

@@ -4,10 +4,16 @@ namespace GroupsPage;
 
 class Hook  {
 
+	
+
 	public static function onLoadExtensionSchemaUpdates( \DatabaseUpdater $updater ) {
 
 		$updater->addExtensionTable( 'pagesbelonging',
-				__DIR__ . '/tables.sql' );
+				__DIR__ . '/../sql/table.sql' );
+		$updater->addExtensionUpdate( array( 'addTable', 'pagesbelonging',
+		__DIR__ . '/../sql/table.sql', true ) );
+		$updater->addExtensionUpdate( array( 'addField', 'pagesbelonging', 'pb_index',
+		__DIR__ . '/../sql/table.patch.pb_index.sql', true ) );
 		return true;
 	}
 

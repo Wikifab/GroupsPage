@@ -5,7 +5,7 @@ CREATE TABLE /*_*/pagesbelonging (
 
   pb_child_page_id int(11) UNSIGNED NOT NULL,
 
-  pb_index int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  pb_index int(11) UNSIGNED DEFAULT 0,
 
   -- Timestamp used to send notification e-mails and show "updated since last visit" markers on
   -- history and recent changes / watchlist. Set to NULL when the user visits the latest revision

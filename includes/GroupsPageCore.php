@@ -37,10 +37,12 @@ class GroupsPageCore  {
 			'pagesbelonging',
 			array(
 				'pb_child_page_id'
-			), array(
+			), 
+			array(
 				'pb_parent_page_id' => $grouppage->getArticleID(),
 			),
-			__METHOD__
+			__METHOD__,
+			array('ORDER BY' => 'pb_index' ) 
 		);
 
 		$pages = array();
@@ -142,7 +144,7 @@ class GroupsPageCore  {
 			if ( $page instanceof \Title && $page->getArticleID()) {
 				$rows[] = array(
 					'pb_parent_page_id' => $gouppage->getArticleID(),
-					'pb_child_page_id' => $page->getArticleID()
+					'pb_child_page_id' => $page->getArticleID() 
 				);
 				$added[] = $page;
 
@@ -175,6 +177,35 @@ class GroupsPageCore  {
 					__METHOD__
 				);
 			}
+		}
+		return true;
+	}
+
+	/**
+	 * Reorder a list of titles in a group
+	 *
+	 *
+	 * @param \Title $grouppage
+	 * @param array $ids Array of int
+	 */
+	public function reorderGroup(  \Title $grouppage, $ids) {
+		$dbw = wfGetDB( DB_MASTER );
+		$i = 0;
+		foreach ( $ids as $id ) {
+
+			$dbw->update(
+				'pagesbelonging',
+				array(
+					'pb_index' => $i
+				),
+				array(
+					'pb_parent_page_id' => $grouppage->getArticleID(),
+					'pb_child_page_id' => $id
+
+				),
+				__METHOD__
+			);
+			$i++;
 		}
 		return true;
 	}

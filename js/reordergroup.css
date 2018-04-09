@@ -1,0 +1,18 @@
+#tutorials-list [id^="item_"]{
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	box-shadow: 0px 1px 3px 0 rgba(0,0,0,0.26);
+	margin-bottom: 20px;
+	background-color: #fff;
+	padding: 10px;
+	font-family: inherit;
+	display: block;
+}
+
+#gp-special-save:hover,
+#gp-special-save:active,
+#gp-special-save:focus
+{
+	color: white;
+}

@@ -91,9 +91,6 @@
 			removeFromGroup(grouppage, page);
 		} else {
 			addToGroup(grouppage, page);
-		}
-		
-		
-		
+		}	
 	});
 })();

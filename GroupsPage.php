@@ -6,11 +6,32 @@ $wgResourceModules['ext.groupspage.css'] = array(
 		'localBasePath' => __DIR__ . '/js',
 		'remoteExtPath' => 'GroupsPage/js',
 );
+
+$wgResourceModules['ext.reordergroup.css'] = array(
+		'styles' => array('reordergroup.css'),
+		'position' => 'top',
+		'localBasePath' => __DIR__ . '/js',
+		'remoteExtPath' => 'GroupsPage/js',
+);
+
 $wgResourceModules['ext.groupspage.js'] = array(
 		'scripts' => 'groupspagebutton.js',
 		'messages' => array(
 		),
+		'dependencies' => array(),
+		'position' => 'bottom',
+		'localBasePath' => __DIR__ . '/js',
+		'remoteExtPath' => 'GroupsPage/js',
+);
+
+$wgResourceModules['ext.reordergroup.js'] = array(
+		'scripts' => 'reordergroup.js',
+		'messages' => array(
+		),
 		'dependencies' => array(
+			"oojs",
+			"oojs-ui",
+			"jquery.ui.sortable"
 		),
 		'position' => 'bottom',
 		'localBasePath' => __DIR__ . '/js',
@@ -35,13 +56,16 @@ $wgUFAllowedNamespaces[NS_GROUP] = true;
 
 
 $wgAutoloadClasses['GroupsPage\\SpecialExploreGroups'] = __DIR__ . '/includes/SpecialExploreGroups.php';
+$wgAutoloadClasses['GroupsPage\\SpecialReorderGroup'] = __DIR__ . '/includes/SpecialReorderGroup.php';
 $wgAutoloadClasses['GroupsPage\\Hook'] = __DIR__ . '/includes/Hook.php';
 $wgAutoloadClasses['GroupsPage\\ApiGroupsPage'] = __DIR__ . '/includes/ApiGroupsPage.php';
+$wgAutoloadClasses['GroupsPage\\ApiReorderGroup'] = __DIR__ . '/includes/ApiReorderGroup.php';
 $wgAutoloadClasses['GroupsPage\\GroupsPageCore'] = __DIR__ . '/includes/GroupsPageCore.php';
 $wgAutoloadClasses['GroupsPage\\Buttons'] = __DIR__ . "/includes/Buttons.php";
 $wgAutoloadClasses['GroupsPage\\ExploreGroupsTag'] = __DIR__ . "/includes/ExploreGroupsTag.php";
 
 $wgSpecialPages['ExploreGroups'] = 'GroupsPage\\SpecialExploreGroups';
+$wgSpecialPages['ReorderGroup'] = 'GroupsPage\\SpecialReorderGroup';
 
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GroupsPage\\Hook::onLoadExtensionSchemaUpdates';
@@ -51,10 +75,12 @@ $wgHooks['BeforePageDisplay'][] = "GroupsPage\\Buttons::onBeforePageDisplay";
 
 
 $wgAPIModules['goupspage'] = 'GroupsPage\\ApiGroupsPage';
+$wgAPIModules['groupspage_reordergroup'] = 'GroupsPage\\ApiReorderGroup';
 
 
 $GLOBALS['wgMessagesDirs']['GroupsPageGeneral'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['GroupsPage'] = __DIR__ . '/GroupsPage.i18n.php';
+$wgExtensionMessagesFiles['GroupsPageI18n'] = __DIR__ . '/GroupsPage.i18n.php';
+$wgExtensionMessagesFiles['GroupsPageAlias'] = __DIR__ . '/GroupsPage.alias.php';
 
 $wgGroupsPagesNamespacesEnabled = [
 		NS_MAIN

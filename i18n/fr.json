@@ -7,7 +7,10 @@
     "exploregroups-title": "Les groupes",
     "exploregroups-desc": "Page de recherche pour groupes",
     "exploregroups-summary": "",
-	"exploregroups-explore-load-more": "Charger plus de groupes"
+	"exploregroups-explore-load-more": "Charger plus de groupes",
+	"gp-special-save": "Enregistrer",
+	"gp-special-success": "L'ordre a bien été modifié",
+	"gp-special-error": "Un problème a été rencontré"
 }
 
 
