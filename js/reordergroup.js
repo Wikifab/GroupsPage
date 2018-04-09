@@ -6,7 +6,7 @@
 		function ajaxGroupsPageQuery(jsondata) {
 			var token = jsondata.query.tokens.csrftoken;
 			$("#gp-special-save i.upl_loading").show();
-			$("#tutorials-list .alert").hide();
+			$("#reordergroup-alert").hide();
 			$.ajax({
 				type: "POST",
 				url: mw.util.wikiScript('api'),
@@ -20,13 +20,13 @@
 			    dataType: 'json',
 			    success: function (jsondata, mv) {
 			    	$("#gp-special-save i.upl_loading").hide();
-			    	$("#tutorials-list .alert").show();
+			    	$("#reordergroup-alert").show();
 			    	if(jsondata.groupspage_reordergroup.success){
-			    		$("#tutorials-list .alert").addClass("alert-success");
-			    		$("#tutorials-list .alert").html(mw.msg('gp-special-success'));
+			    		$("#reordergroup-alert").addClass("alert-success");
+			    		$("#reordergroup-alert").html(mw.msg('gp-special-success'));
 			    	}else{
-			    		$("#tutorials-list .alert").addClass("alert-danger");
-			    		$("#tutorials-list .alert").html(mv.msg('gp-special-error'));
+			    		$("#reordergroup-alert").addClass("alert-danger");
+			    		$("#reordergroup-alert").html(mv.msg('gp-special-error'));
 			    	}
 				}
 			});
