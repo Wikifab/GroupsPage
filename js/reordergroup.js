@@ -19,6 +19,7 @@
 				},
 			    dataType: 'json',
 			    success: function (jsondata) {
+			    	var_dump(jsondata);
 			    	$("#gp-special-save i.upl_loading").hide();
 			    	$("#reordergroup-alert").show();
 			    	if(jsondata.groupspage_reordergroup.success){
