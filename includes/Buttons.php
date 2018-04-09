@@ -34,6 +34,11 @@ class Buttons  {
 			}
 		}
 
+		if (! $page->getTitle()->exists()) {
+			// do not add buttons on inexistent page
+			return true;
+		}
+
 		$groupsAdded = GroupsPageCore::getInstance()->getGroupsPages($page->getTitle());
 
 
