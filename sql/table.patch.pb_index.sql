@@ -1,1 +1,1 @@
-ALTER TABLE pagesbelonging ADD pb_index int(11) UNSIGNED DEFAULT 0;
+ALTER TABLE /*_*/pagesbelonging ADD pb_index int(11) UNSIGNED DEFAULT 0;
