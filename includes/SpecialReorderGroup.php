@@ -26,9 +26,9 @@ class SpecialReorderGroup extends SpecialPage {
 		}else{
 			$pages = GroupsPageCore::getInstance()->getMemberPages($pageTitle);
 
-			$output->addHTML('<div id="tutorials-list" data-grouppage="'.$pageTitle->getDBKey().'" class="row">');
+			$output->addHTML("<div id='reordergroup-alert' class='alert' style='display:none'></div>");
 
-			$output->addHTML("<div class='alert' style='display:none'></div>");
+			$output->addHTML('<div id="tutorials-list" data-grouppage="'.$pageTitle->getDBKey().'" class="row">');
 
 			foreach ($pages as $page) {
 				$result = \SearchResult::newFromTitle( $page );
