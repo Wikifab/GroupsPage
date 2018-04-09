@@ -41,12 +41,6 @@ class ApiReorderGroup extends \ApiBase {
 		$r = [ ];
 		$fail = false;
 
-		if (! $grouppage->getArticleID ()) {
-			$r ['result'] = 'fail';
-			$r ['detail'] = 'grouppage '. $grouppageParam . ' not found';
-			$fail = true;
-		}
-
 		if ($fail) {
 			$this->getResult ()->addValue ( null, $this->getModuleName (), $r );
 			return;
