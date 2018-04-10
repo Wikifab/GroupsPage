@@ -32,7 +32,7 @@ class SpecialReorderGroup extends SpecialPage {
 
 			foreach ($pages as $page) {
 				$result = \SearchResult::newFromTitle( $page );
-				$output->addHTML('<div id="item_'.$page->getArticleID().'">'.$page->getText().'</div>');
+				$output->addHTML('<div class="grabbable" id="item_'.$page->getArticleID().'">'.$page->getText().'<i class="fa fa-arrows-v"></i></div>');
 			}
 			$output->addHTML('</div>');
 
