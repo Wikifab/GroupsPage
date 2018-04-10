@@ -28,7 +28,7 @@ class SpecialReorderGroup extends SpecialPage {
 
 			$output->addHTML("<div id='reordergroup-alert' class='alert' style='display:none'></div>");
 
-			$output->addHTML('<div id="tutorials-list" data-grouppage="'.$pageTitle->getDBKey().'" class="row">');
+			$output->addHTML('<div id="tutorials-list" data-grouppage="'.\MWNamespace::getCanonicalName( $pageTitle->getNamespace() ).':'.$pageTitle->getDBKey().'" class="row">');
 
 			foreach ($pages as $page) {
 				$result = \SearchResult::newFromTitle( $page );
@@ -36,7 +36,7 @@ class SpecialReorderGroup extends SpecialPage {
 			}
 			$output->addHTML('</div>');
 
-			$output->addHTML('<button id="gp-special-save" class="site-button btn " ="reorder group"><i class="fa fa-spinner fa-spin upl_loading" style="display:none"></i>'.
+			$output->addHTML('<button id="gp-special-save" class="site-button btn"><i class="fa fa-spinner fa-spin upl_loading" style="display:none"></i>'.
 						wfMessage( 'gp-special-save' )->parse().
 					'</button>');
 
