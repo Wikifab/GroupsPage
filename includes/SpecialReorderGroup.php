@@ -28,7 +28,7 @@ class SpecialReorderGroup extends SpecialPage {
 
 			$output->addHTML("<div id='reordergroup-alert' class='alert' style='display:none'></div>");
 
-			$output->addHTML('<div id="tutorials-list" data-grouppage="'.\MWNamespace::getCanonicalName( $pageTitle->getNamespace() ).':'.$pageTitle->getDBKey().'" class="row">');
+			$output->addHTML('<div id="tutorials-list" data-grouppage="'.\MWNamespace::getCanonicalName( $pageTitle->getNamespace() ).':'.$pageTitle->getDBKey().'">');
 
 			foreach ($pages as $page) {
 				$result = \SearchResult::newFromTitle( $page );

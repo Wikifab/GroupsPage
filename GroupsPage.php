@@ -27,6 +27,8 @@ $wgResourceModules['ext.groupspage.js'] = array(
 $wgResourceModules['ext.reordergroup.js'] = array(
 		'scripts' => 'reordergroup.js',
 		'messages' => array(
+			"gp-special-success",
+			"gp-special-error"
 		),
 		'dependencies' => array(
 			"oojs",

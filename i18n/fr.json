@@ -10,7 +10,8 @@
 	"exploregroups-explore-load-more": "Charger plus de groupes",
 	"gp-special-save": "Enregistrer",
 	"gp-special-success": "L'ordre a bien été modifié",
-	"gp-special-error": "Un problème a été rencontré"
+	"gp-special-error": "Un problème a été rencontré",
+	"reordergroup": "Réordonner les éléments dans le groupe"
 }
 
 
