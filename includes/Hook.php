@@ -4,6 +4,15 @@ namespace GroupsPage;
 
 class Hook  {
 
+	public static function onArticleDeleteComplete( &$article, \User &$user, $reason, $id, \Content $content = null, \LogEntry $logEntry ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$arrayOfVariables = array(
+			'pb_parent_page_id' => $id,
+			'pb_child_page_id' => $id
+		);
+		$dbw->delete( 'pagesbelonging', $dbw->makeList($arrayOfVariables, LIST_OR), __METHOD__);
+	}
+
 	public static function onLoadExtensionSchemaUpdates( \DatabaseUpdater $updater ) {
 
 		$updater->addExtensionTable( 'pagesbelonging',
