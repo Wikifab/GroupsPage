@@ -74,6 +74,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'GroupsPage\\Hook::onLoadExtensionSch
 $wgHooks['ParserFirstCallInit'][] = 'GroupsPage\\Hook::onParserFirstCallInit';
 $wgHooks['SkinTemplateNavigation'][] = "GroupsPage\\Buttons::onSkinTemplateNavigation";
 $wgHooks['BeforePageDisplay'][] = "GroupsPage\\Buttons::onBeforePageDisplay";
+$wgHooks['ArticleDeleteComplete'][] = "GroupsPage\\Hook::onArticleDeleteComplete";
 
 
 $wgAPIModules['goupspage'] = 'GroupsPage\\ApiGroupsPage';
