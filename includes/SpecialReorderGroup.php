@@ -31,8 +31,9 @@ class SpecialReorderGroup extends SpecialPage {
 			$output->addHTML('<div id="tutorials-list" data-grouppage="'.\MWNamespace::getCanonicalName( $pageTitle->getNamespace() ).':'.$pageTitle->getDBKey().'">');
 
 			foreach ($pages as $page) {
-				$result = \SearchResult::newFromTitle( $page );
-				$output->addHTML('<div class="grabbable" id="item_'.$page->getArticleID().'">'.$page->getText().'<i class="fa fa-arrows-v"></i></div>');
+				if($page->getNamespace() == 0){
+					$output->addHTML('<div class="grabbable" id="item_'.$page->getArticleID().'">'.$page->getText().'<i class="fa fa-arrows-v"></i></div>');
+				}
 			}
 			$output->addHTML('</div>');
 
@@ -46,5 +47,7 @@ class SpecialReorderGroup extends SpecialPage {
 	}
 
 }
+
+
 
 
