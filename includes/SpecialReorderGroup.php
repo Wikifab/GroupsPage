@@ -31,7 +31,7 @@ class SpecialReorderGroup extends SpecialPage {
 			$output->addHTML('<div id="tutorials-list" data-grouppage="'.\MWNamespace::getCanonicalName( $pageTitle->getNamespace() ).':'.$pageTitle->getDBKey().'">');
 
 			foreach ($pages as $page) {
-				if($page->getNamespace() == 0){
+				if($page->getNamespace() == NS_MAIN){
 					$output->addHTML('<div class="grabbable" id="item_'.$page->getArticleID().'">'.$page->getText().'<i class="fa fa-arrows-v"></i></div>');
 				}
 			}
