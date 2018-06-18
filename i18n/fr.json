@@ -9,7 +9,9 @@
     "exploregroups-summary": "",
 	"exploregroups-explore-load-more": "Charger plus de groupes",
 	"gp-special-save": "Enregistrer",
-	"gp-special-success": "L'ordre a bien été modifié",
+    "gp-special-cancel": "Annuler",
+    "gp-special-groupspage-link": "Voir le groupe",
+	"gp-special-success": "L'ordre a bien été modifié. $1.",
 	"gp-special-error": "Un problème a été rencontré",
 	"reordergroup": "Réordonner les éléments dans le groupe"
 }

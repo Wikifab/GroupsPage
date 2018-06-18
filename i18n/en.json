@@ -9,6 +9,8 @@
     "exploregroups-summary": "",
 	"exploregroups-explore-load-more": "Load more groups",
 	"gp-special-save": "Save",
+    "gp-special-cancel": "Cancel",
+    "gp-special-groupspage-link": "See the group",
 	"gp-special-success": "Order has been changed successfully",
 	"gp-special-error": "Something went wrong",
 	"reordergroup": "Reorder elements in the group"

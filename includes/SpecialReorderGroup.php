@@ -37,9 +37,18 @@ class SpecialReorderGroup extends SpecialPage {
 			}
 			$output->addHTML('</div>');
 
+			//save
 			$output->addHTML('<button id="gp-special-save" class="site-button btn"><i class="fa fa-spinner fa-spin upl_loading" style="display:none"></i>'.
 						wfMessage( 'gp-special-save' )->parse().
 					'</button>');
+			//cancel
+			$output->addHTML('<button id="gp-special-cancel" class="site-button btn" onclick="(function(){
+    window.history.back();
+})();return false;">'.
+						wfMessage( 'gp-special-cancel' )->parse().
+					'</button>');
+
+			$output->addJsConfigVars("groupspageLink", \Linker::link(\Title::newFromText('Group:'.$pageTitle->getDBkey()), $this->msg('gp-special-groupspage-link')));
 
 			$output->addModules( 'ext.reordergroup.js' );
 			$output->addModuleStyles('ext.reordergroup.css');

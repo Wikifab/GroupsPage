@@ -24,7 +24,7 @@
 			    	$("#reordergroup-alert").show();
 			    	if(jsondata.groupspage_reordergroup.success){
 			    		$("#reordergroup-alert").addClass("alert-success");
-			    		$("#reordergroup-alert").html(mw.msg('gp-special-success'));
+			    		$("#reordergroup-alert").html(mw.msg('gp-special-success', mw.config.values.groupspageLink));
 			    	}else{
 			    		$("#reordergroup-alert").addClass("alert-danger");
 			    		$("#reordergroup-alert").html(mw.msg('gp-special-error'));
