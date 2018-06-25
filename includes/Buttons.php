@@ -26,41 +26,43 @@ class Buttons  {
 	public static function onSkinTemplateNavigation( &$page, &$content_navigation) {
 		global $wgUser, $wgGroupsPagesNamespacesEnabled;
 
-		// if no button defined for this namespace, return
-		if ($wgGroupsPagesNamespacesEnabled) {
-			$ns = $page->getTitle()->getNamespace();
-			if( ! in_array($ns, $wgGroupsPagesNamespacesEnabled, true)) {
-				return true;;
+		if($wgUser->isLoggedIn()){
+			// if no button defined for this namespace, return
+			if ($wgGroupsPagesNamespacesEnabled) {
+				$ns = $page->getTitle()->getNamespace();
+				if( ! in_array($ns, $wgGroupsPagesNamespacesEnabled, true)) {
+					return true;;
+				}
 			}
+
+			if (! $page->getTitle()->exists()) {
+				// do not add buttons on inexistent page
+				return true;
+			}
+
+			$groupsAdded = GroupsPageCore::getInstance()->getGroupsPages($page->getTitle());
+
+
+			if( $wgUser->getId()) {
+				$usersGroups = \UsersPagesLinks\UsersPagesLinksCore::getInstance()->getUsersPagesLinks($wgUser, 'member');
+			} else {
+				$usersGroups = [];
+			}
+			if ( ! isset($content_navigation['NetworksLinks']) ) {
+				$content_navigation['NetworksLinks'] = [];
+			}
+
+			$content_navigation['NetworksLinks']['addtogroup'] = [
+					'buttonType' => 'dropDown',
+					'type' => 'addtogroup',
+					'redundant' => true,
+					'pageUri' => $page->getTitle()->getDBkey(),
+					'label' =>  wfMessage('groupspage-addtogroup-label' ),
+					'groups' => $usersGroups,
+					'message' => wfMessage('groupspage-addtogroup-message' ),
+					'groupsAdded' => $groupsAdded,
+			];
 		}
-
-		if (! $page->getTitle()->exists()) {
-			// do not add buttons on inexistent page
-			return true;
-		}
-
-		$groupsAdded = GroupsPageCore::getInstance()->getGroupsPages($page->getTitle());
-
-
-		if( $wgUser->getId()) {
-			$usersGroups = \UsersPagesLinks\UsersPagesLinksCore::getInstance()->getUsersPagesLinks($wgUser, 'member');
-		} else {
-			$usersGroups = [];
-		}
-		if ( ! isset($content_navigation['NetworksLinks']) ) {
-			$content_navigation['NetworksLinks'] = [];
-		}
-
-		$content_navigation['NetworksLinks']['addtogroup'] = [
-				'buttonType' => 'dropDown',
-				'type' => 'addtogroup',
-				'redundant' => true,
-				'pageUri' => $page->getTitle()->getDBkey(),
-				'label' =>  wfMessage('groupspage-addtogroup-label' ),
-				'groups' => $usersGroups,
-				'message' => wfMessage('groupspage-addtogroup-message' ),
-				'groupsAdded' => $groupsAdded,
-		];
 
 		return true;
 	}
