@@ -1,5 +1,5 @@
 {
-    "name": "wikifab/GroupsPage",
+    "name": "wikifab/groups-page",
     "description": "This is a mediawiki extension to link pages to group page'",
     "type": "mediawiki-extension",
     "require": {
