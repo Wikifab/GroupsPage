@@ -3,6 +3,6 @@
     "description": "This is a mediawiki extension to link pages to group page'",
     "type": "mediawiki-extension",
     "require": {
-    	"wikifab/UsersPagesLinks": "*"
+    	"wikifab/users-pages-links": "*"
     }
 }
