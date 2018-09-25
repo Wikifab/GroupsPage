@@ -4,16 +4,16 @@
             "Pierre Boutet"
         ]
     },
-    "exploregroups-title": "Groups",
-    "exploregroups-desc": "Search page for groups",
+    "exploregroups-title": "Manuals",
+    "exploregroups-desc": "Search page for manuals",
     "exploregroups-summary": "",
-	"exploregroups-explore-load-more": "Load more groups",
+	"exploregroups-explore-load-more": "Load more manuals",
 	"gp-special-save": "Save",
     "gp-special-cancel": "Cancel",
-    "gp-special-groupspage-link": "See the group",
+    "gp-special-groupspage-link": "See the manual",
 	"gp-special-success": "Order has been changed successfully",
 	"gp-special-error": "Something went wrong",
-	"reordergroup": "Reorder elements in the group"
+	"reordergroup": "Reorder elements in the manual"
 }
 
 
