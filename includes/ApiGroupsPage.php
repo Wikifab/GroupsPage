@@ -47,6 +47,12 @@ class ApiGroupsPage extends \ApiBase {
 		$r = [ ];
 		$fail = false;
 
+		if (! $this->getUser()->isAllowed('managegroups')){
+		    $r ['result'] = 'fail';
+		    $r ['detail'] = 'You are not allowed to associate this page to a group';
+		    $fail = true;
+        }
+
 		if (! $page->getArticleID ()) {
 			$r ['result'] = 'fail';
 			$r ['detail'] = 'page not found';
@@ -63,6 +69,7 @@ class ApiGroupsPage extends \ApiBase {
 			$r ['detail'] = 'groupaction should be add or remove';
 			$fail = true;
 		}
+
 		if ($fail) {
 			$this->getResult ()->addValue ( null, $this->getModuleName (), $r );
 			return;
@@ -92,6 +99,7 @@ class ApiGroupsPage extends \ApiBase {
 
 		$this->getResult ()->addValue ( null, $this->getModuleName (), $r );
 	}
+
 	public function needsToken() {
 		return 'csrf';
 	}

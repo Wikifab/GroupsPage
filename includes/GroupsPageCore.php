@@ -1,5 +1,6 @@
 <?php
 namespace GroupsPage;
+use Title;
 
 /**
  * core opération for GroupsPages
@@ -92,14 +93,43 @@ class GroupsPageCore  {
 		return $result;
 	}
 
+    /**
+     * Return all registered groups
+     * @return array
+     */
+    public function getGroups(){
+	    $dbr = wfGetDB( DB_MASTER );
+
+	    $res = $dbr->select(
+	        'page',
+            array(
+                'page_namespace',
+                'page_title'
+            ),
+            array(
+                'page_namespace = 220'
+            ),
+            __METHOD__
+        );
+
+	    $titles = array();
+	    if( $res->numRows() > 0 ) {
+	        foreach( $res as $row ) {
+                $titles[] = Title::makeTitleSafe($row->page_namespace, $row->page_title);
+            }
+        }
+
+        return $titles;
+    }
+
 	/**
-	 * get list of page wich belong this one
+	 * get list of page which belong this one
 	 * and return an array of Title
 	 *
 	 * @param \Title $page
 	 * @return array
 	 */
-	public function getGroupsPages(\Title $page) {
+	public function getGroupsPages(\Title $page = null) {
 		$list = array();
 		$dbr = wfGetDB( DB_MASTER );
 
@@ -116,7 +146,7 @@ class GroupsPageCore  {
 		$pages = array();
 		if ( $res->numRows() > 0 ) {
 			foreach ( $res as $row ) {
-				$pages[] = \Title::newFromID(  $row->pb_parent_page_id );
+				$pages[] = Title::newFromID(  $row->pb_parent_page_id );
 			}
 			$res->free();
 		}
