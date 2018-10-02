@@ -30,8 +30,8 @@ class Buttons  {
 			// if no button defined for this namespace, return
 			if ($wgGroupsPagesNamespacesEnabled) {
 				$ns = $page->getTitle()->getNamespace();
-				if( ! in_array($ns, $wgGroupsPagesNamespacesEnabled, true)) {
-					return true;;
+				if(!in_array($ns, $wgGroupsPagesNamespacesEnabled, true)) {
+					return true;
 				}
 			}
 
@@ -40,14 +40,16 @@ class Buttons  {
 				return true;
 			}
 
-			$groupsAdded = GroupsPageCore::getInstance()->getGroupsPages($page->getTitle());
-
-
-			if( $wgUser->getId()) {
-				$usersGroups = \UsersPagesLinks\UsersPagesLinksCore::getInstance()->getUsersPagesLinks($wgUser, 'member');
-			} else {
-				$usersGroups = [];
+			// If not allowed to manage groups, do not display dropdown.
+            if(!$wgUser->isAllowed('managegroups') ) {
+			    return true;
 			}
+
+			// Get already added groups
+            $groupsAdded = GroupsPageCore::getInstance()->getGroupsPages($page->getTitle());
+            // If user is allowed to manage groups, display all registered groups
+            $usersGroups = GroupsPageCore::getInstance()->getGroups();
+
 			if ( ! isset($content_navigation['NetworksLinks']) ) {
 				$content_navigation['NetworksLinks'] = [];
 			}
@@ -99,8 +101,11 @@ class Buttons  {
 
 
 	public static function parserButton( \Parser $input, $grouppage = null ) {
+        $user = $input->getUser();
 
-		return \UsersPagesLinks\Buttons::parserButton($input, 'member',$grouppage);
+        if(!$user->isAllowed('managegroups')){
+            return \UsersPagesLinks\Buttons::parserButton($input, 'member',$grouppage);
+        }
 	}
 
 

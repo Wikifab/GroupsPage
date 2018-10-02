@@ -56,7 +56,10 @@ $wgExtraNamespaces[NS_GROUP_BELONGING] = "Group_belonging";
 
 $wgUFAllowedNamespaces[NS_GROUP] = true;
 
+// Create a new permission
+$wgGroupPermissions['sysop']['managegroups'] = true;
 
+// Autoload classes
 $wgAutoloadClasses['GroupsPage\\SpecialExploreGroups'] = __DIR__ . '/includes/SpecialExploreGroups.php';
 $wgAutoloadClasses['GroupsPage\\SpecialReorderGroup'] = __DIR__ . '/includes/SpecialReorderGroup.php';
 $wgAutoloadClasses['GroupsPage\\Hook'] = __DIR__ . '/includes/Hook.php';

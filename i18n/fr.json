@@ -4,16 +4,16 @@
             "Pierre Boutet"
         ]
     },
-    "exploregroups-title": "Les groupes",
-    "exploregroups-desc": "Page de recherche pour groupes",
+    "exploregroups-title": "Les manuels",
+    "exploregroups-desc": "Page de recherche pour manuels",
     "exploregroups-summary": "",
-	"exploregroups-explore-load-more": "Charger plus de groupes",
+	"exploregroups-explore-load-more": "Charger plus de manuels",
 	"gp-special-save": "Enregistrer",
     "gp-special-cancel": "Annuler",
-    "gp-special-groupspage-link": "Voir le groupe",
+    "gp-special-groupspage-link": "Voir le manuel",
 	"gp-special-success": "L'ordre a bien été modifié. $1.",
 	"gp-special-error": "Un problème a été rencontré",
-	"reordergroup": "Réordonner les éléments dans le groupe"
+	"reordergroup": "Réordonner les éléments dans le manuel"
 }
 
 
