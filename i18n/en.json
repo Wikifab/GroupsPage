@@ -13,7 +13,9 @@
     "gp-special-groupspage-link": "See the group",
 	"gp-special-success": "Order has been changed successfully",
 	"gp-special-error": "Something went wrong",
-	"reordergroup": "Reorder elements in the group"
+	"reordergroup": "Reorder elements in the group",
+	"groupspage-addtogroup-label": "Add to group",
+	"groupspage-addtogroup-message": "Join a group to add this page to a group"
 }
 
 
